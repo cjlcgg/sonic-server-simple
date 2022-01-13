@@ -33,9 +33,9 @@ spring:
     schema:
       - classpath:data.sql
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://${MYSQL_HOST}:${MYSQL_PORT}/${MYSQL_DATABASE:sonic}?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC&autoReconnect=true&serverTimezone=GMT%2b8
-    username: ${MYSQL_USERNAME:root}
-    password: ${MYSQL_PASSWORD:Sonic!@#123}
+    url: jdbc:mysql://rm-uf61dg1417y0zra2r225.mysql.rds.aliyuncs.com:3306/sonic_db?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC&autoReconnect=true&serverTimezone=GMT%2b8
+    username: root
+    password: Foliday#0101PF
 # mybatis-plus配置
 mybatis-plus:
   mapper-locations: classpath:mapping/*.xml, classpath*:com/gitee/sunchenbin/mybatis/actable/mapping/*/*.xml
@@ -59,24 +59,24 @@ actable:
     type: mysql
 
 gateway:
-  host: http://${SONIC_API_HOST:localhost}:${SONIC_API_PORT:8094}
-  secret: ${SECRET_KEY:sonic}
-  expireDay: ${EXPIRE_DAY:14}
+  host: "http://10.179.2.21:8094"
+  secret: sonic
+  expireDay: 14
 
 sonic:
   netty:
-    port: ${SONIC_NETTY_PORT:8095}
+    port: 8095
   jobs:
-    fileCron: ${FILE_CRON:0 0 12 * * ?}
-    resultCron: ${RESULT_CRON:0 0 12 * * ?}
-    dayReportCron: ${DAY_CRON:0 0 10 * * ?}
-    weekReportCron: ${WEEK_CRON:0 0 10 ? * Mon}
-    filesKeepDay: ${FILE_KEEP_DAY:60}
-    resultsKeepDay: ${RESULT_KEEP_DAY:60}
+    fileCron: 0 0 12 * * ?
+    resultCron: 0 0 12 * * ?
+    dayReportCron: 0 0 10 * * ?
+    weekReportCron: 0 0 10 ? * Mon
+    filesKeepDay: 60
+    resultsKeepDay: 60
 
 robot:
   client:
-    host: ${CLIENT_HOST:http://localhost:3000}
+    host: "http://10.179.2.21:3000"
   img:
     success: "https://gitee.com/sonic-cloud/sonic-cloud/raw/master/src/assets/suc.png"
     warning: "https://gitee.com/sonic-cloud/sonic-cloud/raw/master/src/assets/warn.png"
@@ -86,7 +86,7 @@ knife4j:
   enable: true
   setting:
     enableHost: true
-    enableHostText: http://${SONIC_API_HOST:localhost}:${SONIC_API_PORT:8094}
+    enableHostText: "http://10.179.2.21:8094"
     enableFooter: false
     enableFooterCustom: true
     footerCustomContent: MIT License | Copyright 2021 - [SonicCloudOrg/sonic-server](https://github.com/SonicCloudOrg/sonic-server/blob/main/LICENSE)
@@ -98,4 +98,7 @@ logging:
     rollingpolicy:
       clean-history-on-start: true
       max-history: 3
+  level:
+    org.cloud.sonic.simple.mapper: debug
+
 

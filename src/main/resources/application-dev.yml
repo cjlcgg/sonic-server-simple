@@ -33,9 +33,9 @@ spring:
     schema:
       - classpath:data.sql
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/sonic?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC&autoReconnect=true&serverTimezone=GMT%2b8
+    url: jdbc:mysql://rm-uf61dg1417y0zra2r225.mysql.rds.aliyuncs.com:3306/sonic_db?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC&autoReconnect=true&serverTimezone=GMT%2b8
     username: root
-    password: Sonic!@#123
+    password: Foliday#0101PF
 # mybatis-plus配置
 mybatis-plus:
   mapper-locations: classpath:mapping/*.xml, classpath*:com/gitee/sunchenbin/mybatis/actable/mapping/*/*.xml
