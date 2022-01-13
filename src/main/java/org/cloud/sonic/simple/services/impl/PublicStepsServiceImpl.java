@@ -136,6 +136,7 @@ public class PublicStepsServiceImpl extends SonicServiceImpl<PublicStepsMapper, 
     @Transactional(rollbackFor = Exception.class)
     public boolean deleteByProjectId(int projectId) {
         PublicSteps publicSteps = lambdaQuery().eq(PublicSteps::getProjectId, projectId).one();
+        if (!Objects.nonNull(publicSteps)) return false;
         publicStepsStepsMapper.delete(new LambdaQueryWrapper<PublicStepsSteps>()
                 .eq(PublicStepsSteps::getPublicStepsId, publicSteps.getId()));
         return delete(publicSteps.getId());

@@ -98,3 +98,6 @@ logging:
     rollingpolicy:
       clean-history-on-start: true
       max-history: 3
+  level:
+    root: error
+    org.cloud.sonic.simple.mapper: debug
